@@ -1,24 +1,32 @@
+
+const UserProfile = (props) => {
+  return (
+    <div>
+      <h2>{props.name}</h2>
+      <p>Age: {props.age}</p>
+      <p>Bio: {props.bio}</p>
+    </div>
+  );
+};
+
+export default UserProfile;
+
+
+
 import UserProfile from './components/UserProfile';
 
 function App() {
   return (
     <div>
-      <h1>User Profiles</h1>
-
-      <UserProfile
-        name="Alice"
-        age="25"
-        bio="Loves hiking and photography"
-      />
-
-      <UserProfile
-        name="John"
-        age="30"
-        bio="Enjoys coding and traveling"
+      <UserProfile 
+        name="Alice" 
+        age="25" 
+        bio="Loves hiking and photography" 
       />
     </div>
   );
 }
 
 export default App;
+
 
