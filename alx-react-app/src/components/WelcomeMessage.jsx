@@ -1,11 +1,18 @@
-import WelcomeMessage from './components/WelcomeMessage
+import React from 'react';
+
 function WelcomeMessage() {
-    return (
-        <div>
-            <h1>Hello everyone, I am learning React at ALX!</h1>
-            <p>I am learning about JSX!</p>
-        </div>
-	<WelcomeMessage /import { useState } from 'react';
+  return (
+    <div>
+      <h1>Hello everyone, I am learning React at ALX!</h1>
+      <p>I am learning about JSX!</p>
+    </div>
+  );
+}
+
+export default WelcomeMessage;
+
+
+import { useState } from 'react';
 import WelcomeMessage from './components/WelcomeMessage';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
@@ -25,7 +32,7 @@ function App() {
         </a>
       </div>
 
-      {/* Insert your new component */}
+      {/* Render the WelcomeMessage component */}
       <WelcomeMessage />
 
       <h1>Vite + React</h1>
@@ -43,8 +50,4 @@ function App() {
 }
 
 export default App;
->
-    );
-}
 
-export default WelcomeMessage;
