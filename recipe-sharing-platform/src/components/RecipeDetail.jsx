@@ -1,58 +1,47 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import data from "../data.json";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import recipesData from "../data.json";
 
-function RecipeDetail() {
+const RecipeDetail = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const foundRecipe = data.find(
-      (item) => item.id === parseInt(id)
-    );
+    const foundRecipe = recipesData.find((r) => r.id === parseInt(id));
     setRecipe(foundRecipe);
   }, [id]);
 
-  if (!recipe) {
-    return <p className="text-center mt-10">Recipe not found</p>;
-  }
+  if (!recipe) return <p className="text-center mt-10 text-gray-700">Recipe not found.</p>;
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <Link to="/" className="text-blue-500 hover:underline mb-6 inline-block">
+        &larr; Back to Home
+      </Link>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-4">{recipe.name}</h1>
       <img
         src={recipe.image}
-        alt={recipe.title}
-        className="w-full h-64 object-cover rounded-lg mb-6"
+        alt={recipe.name}
+        className="w-full h-64 sm:h-96 object-cover rounded-lg mb-6"
       />
-
-      <h1 className="text-3xl font-bold mb-4">
-        {recipe.title}
-      </h1>
-
       <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">
-          Ingredients
-        </h2>
-        <ul className="list-disc list-inside text-gray-700">
-          {recipe.ingredients.map((item, index) => (
-            <li key={index}>{item}</li>
+        <h2 className="text-2xl font-semibold mb-3">Ingredients</h2>
+        <ul className="list-disc list-inside space-y-1 text-gray-700">
+          {recipe.ingredients.map((item, idx) => (
+            <li key={idx}>{item}</li>
           ))}
         </ul>
       </section>
-
       <section>
-        <h2 className="text-xl font-semibold mb-2">
-          Instructions
-        </h2>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2">
-          {recipe.instructions.map((step, index) => (
-            <li key={index}>{step}</li>
+        <h2 className="text-2xl font-semibold mb-3">Instructions</h2>
+        <ol className="list-decimal list-inside space-y-2 text-gray-700">
+          {recipe.instructions.map((step, idx) => (
+            <li key={idx}>{step}</li>
           ))}
         </ol>
       </section>
     </div>
   );
-}
+};
 
 export default RecipeDetail;
-
